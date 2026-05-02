@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>SKYRA — The Future of Mobility</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" >
+  <style>
+    :root {
+      --bg: #0A0E27;
+      --bg2: #111640;
+      --cyan: #00E5FF;
+      --cyan-dim: rgba(0, 229, 255, 0.12);
+      --cyan-border: rgba(0, 229, 255, 0.3);
+      --amber: #FFB800;
+      --white: #F0F0F5;
+      --text: #B0B5CC;
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 14, 39, 0.9);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--cyan);
+      letter-spacing: 0.15em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.08) 0%, transparent 60%), var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.03) 0%, transparent 50%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 8vw, 80px);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero p {
+      color: var(--text);
+      font-size: 18px;
+      max-width: 600px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-primary {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 36px;
+      background: var(--cyan);
+      color: var(--bg);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: #00F0FF;
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 40px;
+    }
+    .section-title span { color: var(--cyan); }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .about-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .about-card:hover {
+      border-color: var(--cyan-border);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 229, 255, 0.08);
+    }
+    .about-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .about-card h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--cyan);
+    }
+    .about-card p {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    /* ── HUD Preview ── */
+    .hud-preview {
+      background: var(--bg2);
+      border: 1px solid var(--cyan-border);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hud-screen {
+      background: #000;
+      border: 2px solid var(--cyan);
+      border-radius: 8px;
+      padding: 20px;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--cyan);
+      line-height: 1.8;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), inset 0 0 30px rgba(0, 229, 255, 0.05);
+      animation: flicker 4s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      92% { opacity: 1; }
+      93% { opacity: 0.8; }
+      94% { opacity: 1; }
+      96% { opacity: 0.9; }
+    }
+    .hud-screen .line { display: flex; justify-content: space-between; }
+    .hud-screen .line .label { color: #008899; }
+    .hud-screen .line .value { color: var(--cyan); }
+    .hud-screen .line .warn { color: var(--amber); }
+
+    .hud-info h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .hud-info p {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px 40px;
+      text-align: center;
+      color: var(--text);
+      font-size: 12px;
+    }
+    footer span { color: var(--cyan); }
+
+    @media (max-width: 768px) {
+      .about-grid, .hud-preview { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">SKYRA</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#product">Product</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#investors">Investors</a></li>
+      <li><a href="#">Press</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>THE FUTURE<br><span>OF MOBILITY</span></h1>
+    <p>Experience revolutionary personal transportation through groundbreaking innovation. SKYRA empowers individuals to soar beyond boundaries.</p>
+    <a href="#about" class="btn-primary">Learn More</a>
+  </section>
+
+  <section id="about">
+    <div class="section-title">ABOUT <span>SKYRA</span></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon">🦾</div>
+        <h3>FLIGHT SUIT</h3>
+        <p>Advanced propulsion suit with 6-axis stabilization, carbon-fiber frame, and electric jet thrusters for controlled personal flight.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">🪖</div>
+        <h3>AIRPATH HELMET</h3>
+        <p>Smart HUD helmet with real-time telemetry, AI route planning, voice commands, and full situational awareness.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">🧠</div>
+        <h3>AI NAVIGATION</h3>
+        <p>Powered by AIRPATH — autonomous route optimization, obstacle avoidance, and flight path calculations in real time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="section-title">AIRPATH <span>HUD</span></div>
+    <div class="hud-preview">
+      <div class="hud-screen" id="hudScreen">
+        <div class="line"><span class="label">SYS</span><span class="value">SKYRA ONLINE</span></div>
+        <div class="line"><span class="label">MODE</span><span class="value">STANDBY</span></div>
+        <div class="line"><span class="label">ROUTE</span><span class="value">INITIALIZED</span></div>
+        <div class="line"><span class="label">SPEECH</span><span class="value">READY</span></div>
+        <div class="line"><span class="label">HELM</span><span class="value">CONNECTED</span></div>
+        <div class="line"><span class="label">SUIT</span><span class="value">SYNCED</span></div>
+        <div class="line"><span class="label">ALT</span><span class="value" id="altVal">0.0m</span></div>
+        <div class="line"><span class="label">BAT</span><span class="value">87%</span></div>
+      </div>
+      <div class="hud-info">
+        <h3>REAL-TIME TELEMETRY</h3>
+        <p>
+          The AIRPATH helmet displays critical flight data directly in the pilot's field of view — altitude, speed, battery level, route status, and system warnings — updating 5 times per second.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="section-title">DEMO & <span>VIDEO</span></div>
+    <p style="color: var(--text); margin-bottom: 24px;">Join us in shaping the future of personal flight. Explore investment opportunities with SKYRA.</p>
+    <a href="#" class="btn-primary">VIEW PITCH DECK</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 <span>SKYRA</span> — Powered by AIRPATH. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Simulate live altitude updates
+    let altitude = 0;
+    const altEl = document.getElementById('altVal');
+    
+    setInterval(() => {
+      altitude = Math.max(0, altitude + (Math.random() - 0.3) * 5);
+      if (altEl) altEl.textContent = altitude.toFixed(1) + 'm';
+    }, 500);
+  </script>
+
+</body>
+</html>
